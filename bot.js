@@ -99,15 +99,15 @@ client.on('message', function(msg) {
       .setColor('RANDOM')
       .setThumbnail(msg.guild.iconURL)
       .setTitle(`Showing Details Of  **${msg.guild.name}*`)
-      .addField('??** نوع السيرفر**',`[** __${msg.guild.region}__ **]`,true)
-      .addField('??** __الرتب__**',`[** __${msg.guild.roles.size}__ **]`,true)
-      .addField('??**__ عدد الاعضاء__**',`[** __${msg.guild.memberCount}__ **]`,true)
-      .addField('??**__ عدد الاعضاء الاونلاين__**',`[** __${msg.guild.members.filter(m=>m.presence.status == 'online').size}__ **]`,true)
-      .addField('??**__ الرومات الكتابية__**',`[** __${msg.guild.channels.filter(m => m.type === 'text').size}__** ]`,true)
-      .addField('??**__ رومات الصوت__**',`[** __${msg.guild.channels.filter(m => m.type === 'voice').size}__ **]`,true)
-      .addField('??**__ الأونـر__**',`**${msg.guild.owner}**`,true)
-      .addField('??**__ ايدي السيرفر__**',`**${msg.guild.id}**`,true)
-      .addField('??**__ تم عمل السيرفر في__**',msg.guild.createdAt.toLocaleString())
+      .addField('** نوع السيرفر**',`[** __${msg.guild.region}__ **]`,true)
+      .addField('** __الرتب__**',`[** __${msg.guild.roles.size}__ **]`,true)
+      .addField('**__ عدد الاعضاء__**',`[** __${msg.guild.memberCount}__ **]`,true)
+      .addField('**__ عدد الاعضاء الاونلاين__**',`[** __${msg.guild.members.filter(m=>m.presence.status == 'online').size}__ **]`,true)
+      .addField('**__ الرومات الكتابية__**',`[** __${msg.guild.channels.filter(m => m.type === 'text').size}__** ]`,true)
+      .addField('**__ رومات الصوت__**',`[** __${msg.guild.channels.filter(m => m.type === 'voice').size}__ **]`,true)
+      .addField('**__ الأونـر__**',`**${msg.guild.owner}**`,true)
+      .addField('**__ ايدي السيرفر__**',`**${msg.guild.id}**`,true)
+      .addField('**__ تم عمل السيرفر في__**',msg.guild.createdAt.toLocaleString())
       msg.channel.send({embed:embed});
     }
   });
@@ -171,7 +171,7 @@ client.on('message',  (message) => {
 
   message.channel.send({
     embed: {
-      description: `${message.author.username} اداك بالقلم علي وشك ${user.username}!`,
+      description: `${message.author.username} ضربك كف بنص وجهك ${user.username}!`,
       image: {
         url: slaps[Math.floor(Math.random() * slaps.length)]
       }
@@ -216,7 +216,42 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('لي�
 
 });
 
-
+client.on('message' , message => {
+if(message.content === '+help') {
+  var EsTeKnAN = new Discord.RichEmbed()
+  .setColor('RANDOM')
+message.author.send(`
+***__وصف عن البوت__***
+**
+─════════════ {✯اوامر البوت✯} ════════════─
+❧ +ban ➺ تبنيد عضو من السيرفر
+❧ +kick ➺ طرد عضو من السيرفر
+❧ +mute ➺ كتم العضو
+❧ +unmute ➺ فك الميوت
+❧ +bc ➺ رسالة جماعية لاعضاء السيرفر
+❧ +link ➺ رابط السيرفر
+❧ +clear ➺ مسح الرسائل من المحادثة
+❧ +marry ➺ لعبة زواج
+❧ +kf ➺ كف
+❧ +mc ➺ قفل الروم
+❧ +umc ➺ فتح الروم
+❧ +say ➺ البوت يكرر كلام انته تكتبه
+❧ +Send ➺ ارسال رسالة الى شخص من البوت
+❧ +hacked ➺ لعبة التهكير
+❧ +apply ➺ تقديم لازم يكون في روم اسمه التقديمات
+❧ +report ➺ روم التبليغ لازم يكون في روم اسمه reports
+❧ +bans ➺ معرفة عدد الاشخاص المبندين من السيرفر
+❧ +cv ➺ انشاء روم صوتي
+❧ +ct ➺ انشاء روم كتابي
+❧ +setVoice ➺ يسويلك روم يقولك عدد الاشخاص في الفويس
+❧ +move ➺ سحب الشخص الى الروم الي انته فيه
+❧ +fast ➺ لعبة اسرع
+❧ -news ➺ اخر تحديثات البوت
+─════════════ {✯By Dream ✯} ════════════─
+**
+`);
+}
+})
 
 
 client.on('message', message => {
@@ -236,7 +271,6 @@ if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send('
    message.delete()
   }
  });
-
 
 
    
@@ -376,6 +410,7 @@ client.on('message', message =>{
 
 
 
+
 client.on('message', message =>{
     let args = message.content.split(' ');
     let prefix = '+'; //تقدر تغير البرفكس
@@ -407,13 +442,7 @@ client.on('message', message => {
 }
 });
 
-client.on("guildMemberAdd", member => {
-  member.createDM().then(function (channel) {
-  return channel.send(`:rose:  ولكم نورت السيرفر:rose: 
-:crown:اسم العضو  ${member}:crown:  
-انت العضو رقم ${member.guild.memberCount} `) 
-}).catch(console.error)
-})
+
 client.on("message", (message) => {
 if (message.content.startsWith("+ct")) {
             if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply("You Don't Have `MANAGE_CHANNELS` Premissions ");
@@ -669,6 +698,18 @@ if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return mess
  
 });
 
+
+
+client.on('message', news => {
+if(news.content === '-news') {
+     let embed = new Discord.RichEmbed()
+.setThumbnail(news.author.avatarURL)
+.addField('     ** Update ** ' ,' **+fast** ')
+.setColor('#7d2dbe')
+  news.channel.sendEmbed(embed);
+    }
+});
+
 client.on('message', message => {
     if (message.content == "+fast") {
         var x = ["DreamKing",
@@ -741,12 +782,110 @@ client.on('ready', () => {
       console.log(`ON ${client.guilds.size} Servers '     Script By : EX Clan ' `);
     console.log(`----------------`);
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`+help | ${client.guilds.size} servers`,"http://twitch.tv/Cypher Bot")
+client.user.setGame(`+help | Alsh`,"http://twitch.tv/Alsh")
 client.user.setStatus("dnd")
 });
 
+client.on('message', fkk => {
+    if (fkk.content == "+fkk") {
+        var x = ["المتاح للجميع لا يتاح لي",
+"خعاخع",
+"فيلا",
+"بريء",
+"بسم الله الرحمن الرحيم",
+"الضرورة",
+"دنيا",
+"صارم",
+"مات",
+"شعبان شبعان",
+"ألعراق",
+];
+        var x2 = ['ا ل م ت ا ح ل ل ج م ي ع ل ا ي ت ا ح ل ى',
+		"خ ع ا خ ع",
+        "ف ي ل ا",
+		"ب ر ي ء",
+		"ب س م ا ل ل ه ا ل ر ح م ن ا ل ر ح ي م",
+		"ا ل ض ر و ر ة",
+		"د ن ي ا",
+		"ص ا ر م",
+		"م ا ت",
+		"ش ع ب ا ن ش ب ع ا ن",
+		"أ ل ع ر ا ق",
+        
+        
+        
+        
+        ];
+        
+        var x3 = Math.floor(Math.random()*x.length)
+        fkk.channel.send(` اول شخص يفكك :  __**${x[x3]}**__
+لديك 15 ثانية للاجابة`).then(msg1=> {
+            var r = fkk.channel.awaitMessages(msg => msg.content == x2[x3], {
+                maxMatches : 1,
+                time : 15000,
+                errors : ['time']
+            })
+        r.catch(() => {
+            return fkk.channel.send(`:negative_squared_cross_mark: لقد انتهى الوقت ولم يقم أحد بالأجابة بشكل صحيح 
+            الإجآبة الصحيحةة هي __**${x2[x3]}**__`)
+        })
+        
+        r.then((collected)=> {
+            fkk.channel.send(`${collected.first().author} لقد قمت بتفكيك الجملة في الوقت المناسب  `);
+        })
+        })
+    }
+})
 
-
-
+client.on('message', puz => {
+    if (puz.content == "+puz") {
+        var x = ["ما هي حاسة الشم عند الثعبان ؟",
+"ما هو الشي الذي يكسو الناس و هو عار بدون ملابس ؟",
+"ما هو الشي الذي لا يجري و لا يمشي ؟",
+"ما هو إسم الشهر الميلادي الذي إذا حذفت أوله , تحول إلى إسم فاكهه ؟",
+"ما هو الشي الذي لا يدخل الإ إذا ضرب على رأسه ؟",
+"ما هو الشيء الذي اسمه على لونه ؟",
+"ما هو الشي الذي كلما زاد نقص ؟",
+"ما هي التي تحرق نفسها لتفيد غيرها ؟",
+"كله ثقوب و مع ذلك يحفظ الماء ؟",
+"ما هو الذي لحمه من الداخل و عظمه من الخارج ؟",
+"يستطيع ان يخترق الزجاج من دون كسره .. فما هو ؟",
+];
+        var x2 = ['اللسان',
+		"الابره",
+        "الماء",
+		"تموز",
+		"المسمار",
+		"البيضة",
+		"العمر",
+		"الشمعة",
+		"الاسفنج",
+		"السلحفاة",
+		"الضوء",
+        
+        
+        
+        
+        ];
+        
+        var x3 = Math.floor(Math.random()*x.length)
+        puz.channel.send(` اول شخص يفكك :  __**${x[x3]}**__
+لديك 20 ثانية للاجابة`).then(msg1=> {
+            var r = puz.channel.awaitMessages(msg => msg.content == x2[x3], {
+                maxMatches : 1,
+                time : 20000,
+                errors : ['time']
+            })
+        r.catch(() => {
+            return puz.channel.send(`:negative_squared_cross_mark: لقد انتهى الوقت ولم يقم أحد بالأجابة بشكل صحيح 
+            `)
+        })
+        
+        r.then((collected)=> {
+            puz.channel.send(`${collected.first().author} لقد قمت بحل اللغز في الوقت المناسب  `);
+        })
+        })
+    }
+})
 
 client.login(process.env.BOT_TOKEN);// لا تغير فيها شيء
