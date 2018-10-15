@@ -344,7 +344,7 @@ let chaMd = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors:
   md = co.first().content
         co.first().delete()
         m.delete();
-message.channel.send('**ماذا تستطيع ان تقدم للسيرفر**').then(ms => {
+message.channel.send('**نوع الرتبة + عملتك دولار او كريديت**').then(ms => {
 let br = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
 .then(col => {
   br = col.first().content
@@ -360,7 +360,7 @@ var gg = message.guild.channels.find('name', 'التقديمات')
 if(!gg) return;
 if(gg) {
 gg.send({embed : new Discord.RichEmbed()
-.setDescription(`**  الاسم :question:  : \n ${lan}\nالعمر :link: :\n ${md} \n ماذا تستطيع ان تقدم للسيرفر :question: :\n ${br}  \nتم التقديم بواسطة  : <@${message.author.id}> **`)  
+.setDescription(`**  الاسم :question:  : \n ${lan}\nالعمر :link: :\n ${md} \n نوع الرتبة + عملتك دولار او كريديت :question: :\n ${br}  \nتم التقديم بواسطة  : <@${message.author.id}> **`)  
           .setFooter(`ادارة السيرفر`)
 .setTimestamp()
 });
