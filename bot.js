@@ -10,14 +10,14 @@ const args = message.content.split(" ").slice(1).join(" ")
 const BcList = new Discord.RichEmbed()
 .setThumbnail(message.author.avatarURL)
 .setAuthor(`محتوى الرساله : ${args}`)
-.setDescription(`**برودكاست بـ امبد ??\nبرودكاست بدون امبد? \nلديك دقيقه للأختيار قبل الغاء البرودكاست**`)
+.setDescription(`**برودكاست بـ امبد 📝\nبرودكاست بدون امبد✏ \nلديك دقيقه للأختيار قبل الغاء البرودكاست**`)
 if (!args) return message.reply('**يجب عليك كتابة كلمة او جملة لإرسال البرودكاست**');message.channel.send(BcList).then(msg => {
-msg.react('??')
-.then(() => msg.react('?'))
-.then(() =>msg.react('??'))
+msg.react('📝')
+.then(() => msg.react('✏'))
+.then(() =>msg.react('📝'))
  
-var EmbedBcFilter = (reaction, user) => reaction.emoji.name === '??' && user.id === message.author.id;
-var NormalBcFilter = (reaction, user) => reaction.emoji.name === '?' && user.id === message.author.id;
+var EmbedBcFilter = (reaction, user) => reaction.emoji.name === '📝' && user.id === message.author.id;
+var NormalBcFilter = (reaction, user) => reaction.emoji.name === '✏' && user.id === message.author.id;
  
 var EmbedBc = msg.createReactionCollector(EmbedBcFilter, { time: 60000 });
 var NormalBc = msg.createReactionCollector(NormalBcFilter, { time: 60000 });
@@ -338,13 +338,13 @@ client.on('message', message => {
       lan = collected.first().content
       collected.first().delete()
 e.delete();
-     message.channel.send('**العمر**').then(m => {
+     message.channel.send('**هل ستبيع بسعر الشوب**').then(m => {
 let chaMd = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
 .then(co => {
   md = co.first().content
         co.first().delete()
         m.delete();
-message.channel.send('**نوع الرتبة + عملتك دولار او كريديت**').then(ms => {
+message.channel.send('**عملتك**').then(ms => {
 let br = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
 .then(col => {
   br = col.first().content
@@ -360,7 +360,7 @@ var gg = message.guild.channels.find('name', 'التقديمات')
 if(!gg) return;
 if(gg) {
 gg.send({embed : new Discord.RichEmbed()
-.setDescription(`**  الاسم :question:  : \n ${lan}\nالعمر :link: :\n ${md} \n نوع الرتبة + عملتك دولار او كريديت :question: :\n ${br}  \nتم التقديم بواسطة  : <@${message.author.id}> **`)  
+.setDescription(`**  الاسم :question:  : \n ${lan}\nهل ستبيع بسعر الشوب :link: :\n ${md} \n عملتك :question: :\n ${br}  \nتم التقديم بواسطة  : <@${message.author.id}> **`)  
           .setFooter(`ادارة السيرفر`)
 .setTimestamp()
 });
